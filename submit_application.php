@@ -48,4 +48,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 // </script>";"
                     // header("Location:submit");
                 } else {
-           
+                    echo "Error: " . $conn->error;
+                }
+            } else {
+                echo "Error uploading resume file.";
+            }
+        } else {
+            echo "Invalid file type. Only PDF files are allowed.";
+        }
+    } else {
+        echo "Error uploading resume file.";
+    }}
+    ?>
+// Close the database connection
