@@ -1,85 +1,208 @@
+/* === Base Styling === */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: bisque;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: bisque;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #222;
+  line-height: 1.6;
 }
 
-.site-nav{
-    background-color: #118d53;
-}
-.nav-pad{
-    padding-right: 26dp;
+/* === Navigation === */
+.site-nav {
+  background-color: #118d53;
+  padding: 10px 0;
 }
 
+.nav-pad {
+  padding-right: 20px;
+}
+
+/* === Container === */
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
+/* === Header === */
 .header {
-    width: 100%;
-    text-align: left;
-    padding: 20px;
+  width: 100%;
+  text-align: left;
+  padding: 20px 0;
 }
 
 .logo {
-    width: 150px;
+  width: 150px;
+  max-width: 100%;
+  object-fit: contain;
 }
 
+/* === Main Content Layout === */
 .main-content {
-    display: flex;
-    justify-content: space-between;
-    background: rgba(241, 234, 234, 0.9);
-    border-radius: 10px;
-    padding: 20px;
-    max-width: 1400px;
-    width: 100%;
-    box-shadow: 0 4px 8px rgba(177, 171, 171, 0.1);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  padding: 30px;
+  width: 100%;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
 }
 
-.content-box, .questions-box {
-    padding: 20px;
-    background: rgb(243, 228, 228);
-    border-radius: 10px;
-    margin: 5px;
-    flex: 1;
-}
-.questions-box{
-    max-height: 250px;
-    max-width: 500px;
-    width: 100%;
+/* === Content & FAQ Boxes === */
+.content-box,
+.questions-box {
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 10px;
+  margin: 10px;
+  flex: 1;
+  min-width: 280px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
 }
 
 .content-box {
-    margin-right: 20px;
+  margin-right: 20px;
 }
 
-.questions-box ul {
-    list-style: none;
-    padding: 0;
+.content-box h1,
+.content-box h3,
+.content-box h5 {
+  color: #118d53;
+  margin-top: 0.5rem;
 }
 
-.questions-box li {
-    margin: 10px 0;
-    cursor: pointer;
+.content-box p {
+  margin-bottom: 1rem;
 }
 
-.questions-box a {
-    color: blue;
-    text-decoration: none;
+/* === FAQ Section === */
+.questions-box {
+  max-width: 500px;
+  width: 100%;
+}
+
+/* Option 1: For <details> approach (preferred) */
+details {
+  background: #fff;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  cursor: pointer;
+}
+
+details summary {
+  font-weight: bold;
+  font-size: 1rem;
+  color: #222;
+  transition: 0.3s ease;
+}
+
+details[open] summary {
+  color: #118d53;
+  background-color: #eaf8f0;
+  padding-left: 8px;
+  border-left: 4px solid #118d53;
+}
+
+/* Option 2: If using .question + .answer instead */
+.question {
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 10px;
+  transition: color 0.3s ease;
+}
+
+.question:hover {
+  color: #118d53;
 }
 
 .answer {
-    display: none;
-    padding: 10px;
-    background: #f9f9f9;
-    border-radius: 5px;
-    margin-top: 5px;
+  display: none;
+  background: #ffffff;
+  border-left: 4px solid #118d53;
+  border-radius: 6px;
+  padding: 10px;
+  margin-top: 5px;
+  font-size: 0.95rem;
 }
 
+/* === Form Styling === */
+form {
+  margin-top: 2rem;
+}
+
+fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+select,
+textarea {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* === Submit Button === */
+input[type="submit"],
+.btn-primary {
+  background-color: #118d53;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+input[type="submit"]:hover,
+.btn-primary:hover {
+  background-color: #0c6b41;
+}
+
+/* === Responsive Design === */
+@media (max-width: 768px) {
+  .main-content {
+    flex-direction: column;
+  }
+
+  .content-box,
+  .questions-box {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .nav-pad {
+    padding-right: 10px;
+  }
+}
