@@ -1,10 +1,10 @@
 <?php
-// require_once("includes/sessions.php");
+require_once("includes/sessions.php");
 
-// if (!isset($_SESSION["name"])) {
-//     header("Location: login.php");
-//     exit();
-// }
+if (!isset($_SESSION["name"])) {
+    header("Location: login.php");
+    exit();
+}
 
 // Include the database connection configuration
 include('includes/config.php');
@@ -34,9 +34,10 @@ $result = $stmt->get_result(); // Get the result set
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard - View Applicants</title>
+    <title>Admin- View Applicants</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="icon" href="images/bethel.png" type="image/x-icon">
 <style>
         body {
             background-color: #f8f9fa;
@@ -191,4 +192,58 @@ $resumeCode = htmlspecialchars($row['resume']);
                 </p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</bu
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+            </div>
+        </main>
+    </div>
+</div>
+
+<!-- Bootstrap JS and Popper.js -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+<script>
+    // Function to open the modal and populate it with the applicant's details
+    function openModal(name, email, phone, education, position, coverLetter, resumeCode) {
+        document.getElementById('applicantName').textContent = name;
+        document.getElementById('applicantEmail').textContent = email;
+        document.getElementById('applicantPhone').textContent = phone;
+        document.getElementById('applicantEducation').textContent = education;
+        document.getElementById('applicantPosition').textContent = position;
+        document.getElementById('applicantCoverLetter').innerHTML = coverLetter;
+        document.querySelector('#applicantModal a').href = `download_resume.php?code=${resumeCode}`;
+
+        // Show the modal
+        var myModal = new bootstrap.Modal(document.getElementById('applicantModal'));
+        myModal.show();
+    }
+
+    // Add event listeners to all "View" buttons
+    document.addEventListener("DOMContentLoaded", function () {
+        const viewButtons = document.querySelectorAll(".view-btn");
+
+        viewButtons.forEach(button => {
+            button.addEventListener("click", function () {
+                const name = this.getAttribute("data-name");
+                const email = this.getAttribute("data-email");
+                const phone = this.getAttribute("data-phone");
+                const education = this.getAttribute("data-education");
+                const position = this.getAttribute("data-position");
+                const coverLetter = this.getAttribute("data-cover-letter");
+                const resumeCode = this.getAttribute("data-resume-code");
+
+                openModal(name, email, phone, education, position, coverLetter, resumeCode);
+            });
+        });
+    });
+</script>
+
+
+</body>
+</html>
